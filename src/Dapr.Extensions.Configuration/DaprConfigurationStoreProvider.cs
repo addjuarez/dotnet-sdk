@@ -118,7 +118,7 @@ namespace Dapr.Extensions.Configuration
                 var getConfigurationResponse = await daprClient.GetConfiguration(store, keys, metadata, cts.Token);
                 foreach (var item in getConfigurationResponse.Items)
                 {
-                    Set(item.Key, item.Value);
+                    Set(item.Key, item.Value.Value);
                 }
             }
         }

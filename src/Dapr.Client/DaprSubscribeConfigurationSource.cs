@@ -77,7 +77,7 @@ namespace Dapr.Client
                 if (current != null)
                 {
                     idCallback(current.Id);
-                    return current.Items.Select(item => new ConfigurationItem(item.Key, item.Value, item.Version, item.Metadata));
+                    return current.Items.Select(item => new ConfigurationItem(item.Key, item.Value.Value, item.Value.Version, item.Value.Metadata));
                 }
                 return null;
             }
