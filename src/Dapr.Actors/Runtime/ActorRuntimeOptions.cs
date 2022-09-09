@@ -225,5 +225,21 @@ namespace Dapr.Actors.Runtime
         /// </remarks>
         /// <value></value>
         public string HttpEndpoint { get; set; } = DaprDefaults.GetDefaultHttpEndpoint();
+
+        /// <summary>
+        /// Gets or sets the Grpc endpoint URI used to communicate with the Dapr sidecar.
+        /// </summary>
+        /// <remarks>
+        /// The URI endpoint to use for Grpc calls to the Dapr runtime. The default value will be 
+        /// <c>http://127.0.0.1:DAPR_GRPC_PORT</c> where <c>DAPR_GRPC_PORT</c> represents the value of the 
+        /// <c>DAPR_GRPC_PORT</c> environment variable.
+        /// </remarks>
+        /// <value></value>
+        public string GrpcEndpoint { get; set; } = DaprDefaults.GetDefaultGrpcEndpoint();
+
+        /// <summary>
+        /// Option to use GRPC or HTTP
+        /// </summary>
+        public bool useGrpc { get; set; } = true;
     }
 }
