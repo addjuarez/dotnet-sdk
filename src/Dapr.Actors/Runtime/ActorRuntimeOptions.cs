@@ -13,6 +13,7 @@
 
 using System;
 using System.Text.Json;
+using Grpc.Net.Client;
 
 namespace Dapr.Actors.Runtime
 {
@@ -241,5 +242,10 @@ namespace Dapr.Actors.Runtime
         /// Option to use GRPC or HTTP
         /// </summary>
         public bool useGrpc { get; set; } = true;
+
+        /// <summary>
+        /// Options for grpc channel
+        /// </summary>
+        public GrpcChannelOptions GrpcChannelOptions { get; set; } = new GrpcChannelOptions(){ThrowOperationCanceledOnCancellation = true,};
     }
 }

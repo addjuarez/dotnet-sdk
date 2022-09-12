@@ -15,6 +15,7 @@ namespace Dapr.Actors.Client
 {
     using System;
     using System.Text.Json;
+    using Grpc.Net.Client;
 
     /// <summary>
     /// The class containing customizable options for how the Actor Proxy is initialized.
@@ -77,5 +78,10 @@ namespace Dapr.Actors.Client
         /// Option to use GRPC or HTTP
         /// </summary>
         public bool useGrpc { get; set; } = false;
+
+        /// <summary>
+        /// Options for grpc channel
+        /// </summary>
+        public GrpcChannelOptions GrpcChannelOptions { get; set; } = new GrpcChannelOptions(){ThrowOperationCanceledOnCancellation = true,};
     }
 }
