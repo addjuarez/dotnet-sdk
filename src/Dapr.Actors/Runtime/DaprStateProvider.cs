@@ -122,8 +122,6 @@ namespace Dapr.Actors.Runtime
                     case StateChangeKind.Remove:
                         break;
                     case StateChangeKind.Add:
-                        op.Key = stateChange.StateName;
-                        break;
                     case StateChangeKind.Update:
                         op.Key = stateChange.StateName;
                         // perform default json serialization if custom serializer was not provided.
