@@ -257,10 +257,14 @@ namespace Dapr.Actors
                 ActorType = actorType,
                 Name = reminderName,
                 DueTime = reminderdata.DueTime != null ? ConverterUtils.ConvertTimeSpanValueInDaprFormat(reminderdata.DueTime) : "",
-                Ttl =  reminderdata.Ttl != null ? ConverterUtils.ConvertTimeSpanValueInDaprFormat(reminderdata.Ttl) : "",
                 Period =  reminderdata.Period != null ? ConverterUtils.ConvertTimeSpanValueInDaprFormat(reminderdata.Period) : "",
                 Data = ByteString.CopyFrom(reminderdata.Data),
             };
+
+            if (reminderdata.Ttl != null){
+                request.Ttl = ConverterUtils.ConvertTimeSpanValueInDaprFormat(reminderdata.Ttl)
+            }
+
             var options = CreateCallOptions(cancellationToken);
 
             try
