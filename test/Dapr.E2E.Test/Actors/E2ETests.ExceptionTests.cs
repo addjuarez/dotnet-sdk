@@ -27,8 +27,12 @@ namespace Dapr.E2E.Test
         {
             using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
             var actorIds = new ActorId(Guid.NewGuid().ToString());
-            var options = new ActorProxyOptions();
-            options.useGrpc = false;
+            var options = new ActorProxyOptions
+            {
+                useGrpc = false,
+                HttpEndpoint = this.HttpEndpoint, 
+                GrpcEndpoint = this.GrpcEndpoint
+            };
             var proxy = this.ProxyFactory.CreateActorProxy<IExceptionActor>(ActorId.CreateRandom(), "ExceptionActor", options);
             await WaitForActorRuntimeAsync(proxy, cts.Token);
             ActorMethodInvocationException ex = await Assert.ThrowsAsync<ActorMethodInvocationException>(async () => await proxy.ExceptionExample());
