@@ -31,7 +31,9 @@ namespace Dapr.E2E.Test
             await WaitForActorRuntimeAsync(proxy, cts.Token);
             ActorMethodInvocationException ex = await Assert.ThrowsAsync<ActorMethodInvocationException>(async () => await proxy.ExceptionExample());
             Console.WriteLine("excception here: {ex}");
-            Console.WriteLine("excception here: {ex.message}");
+            Console.WriteLine(ex);
+            Console.WriteLine("excception here: {ex}");
+            Console.WriteLine(ex.message);
             Assert.Contains("Remote Actor Method Exception", ex.Message);
             Assert.Contains("ExceptionExample", ex.Message);
             Assert.Contains("32", ex.Message);
