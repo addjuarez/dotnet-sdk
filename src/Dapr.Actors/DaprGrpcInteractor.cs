@@ -262,7 +262,7 @@ namespace Dapr.Actors
             };
 
             if (reminderdata.Ttl != null){
-                request.Ttl = ConverterUtils.ConvertTimeSpanValueInDaprFormat(reminderdata.Ttl)
+                request.Ttl = ConverterUtils.ConvertTimeSpanValueInDaprFormat(reminderdata.Ttl);
             }
 
             var options = CreateCallOptions(cancellationToken);
